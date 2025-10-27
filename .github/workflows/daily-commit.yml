@@ -2,8 +2,7 @@ name: 21f3001224@ds.study.iitm.ac.in
 
 on:
   schedule:
-    # Runs daily at 09:00 UTC
-    - cron: "0 9 * * *"
+    - cron: "0 9 * * *"  # 09:00 UTC daily
   workflow_dispatch:
 
 jobs:
@@ -11,9 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     name: 21f3001224@ds.study.iitm.ac.in
     steps:
-      - name: Checkout repository
+      - name: Checkout main branch
         uses: actions/checkout@v4
         with:
+          ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Configure Git
@@ -21,7 +21,7 @@ jobs:
           git config --global user.name "GitHub Action Bot"
           git config --global user.email "21f3001224@ds.study.iitm.ac.in"
 
-      - name: Make daily update file
+      - name: Update timestamp file
         run: |
           echo "Last updated on $(date -u)" > last_update.txt
 
@@ -32,4 +32,4 @@ jobs:
 
       - name: Push changes
         run: |
-          git push origin HEAD:${{ github.ref }}
+          git push origin main
