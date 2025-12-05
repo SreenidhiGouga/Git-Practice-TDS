@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quarterly Earnings — Interactive Report</title>
+
+  <!-- Reveal core CSS + theme (CDN quick-start) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css" id="theme">
+
+  <!-- Highlight.js stylesheet for syntax highlighting (used by RevealHighlight) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+
+  <style>
+    /* small custom styling */
+    .reveal { font-family: "Segoe UI", Roboto, Arial, sans-serif; }
+    footer.presentation-footer {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+    .chart { height: 360px; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Title slide -->
+      <section>
+        <h1>Quarterly Earnings Report</h1>
+        <p class="subtitle">Interactive technical presentation — Qn/Qn+1</p>
+        <p><small>Prepared by: Technical Consulting — Financial Analytics</small></p>
+        <p><small>Email: <a href="mailto:21f3001224@ds.study.iitm.ac.in">21f3001224@ds.study.iitm.ac.in</a></small></p>
+        <aside class="notes">
+          Start with a short welcome, mention confidentiality and the agenda.
+        </aside>
+      </section>
+
+      <!-- Markdown slide (demonstrates data-markdown usage) -->
+      <section data-markdown>
+        <textarea data-template>
+## Executive Summary (Markdown)
+
+- Revenue grew by **X%** YoY.
+- Operating cost improved due to automation initiatives.
+- Key drivers:
+  - Product A adoption
+  - Regional expansion
+  - Operational efficiencies
+
+---  
+
+## Action Items
+
+1. Approve Qn+1 investment plan  
+2. Continue automation rollout  
+3. Start pilot for customer retention program
+        </textarea>
+      </section>
+
+      <!-- Animated fragments -->
+      <section>
+        <h2>Key Metrics</h2>
+        <ul>
+          <li class="fragment">Total Revenue: <strong>₹ 125 crore</strong></li>
+          <li class="fragment">EBITDA: <strong>₹ 18 crore</strong></li>
+          <li class="fragment fade-up">Net Profit Margin: <strong>14.4%</strong></li>
+        </ul>
+        <aside class="notes">
+          Reveal these metrics one-by-one. Mention the reasons behind margin movement.
+        </aside>
+      </section>
+
+      <!-- Code sample with syntax highlighting and data-line-numbers -->
+      <section>
+        <h2>Data Pipeline Example (Python)</h2>
+        <pre><code class="python" data-trim data-noescape>
+import pandas as pd
+
+def compute_quarterly_metrics(filepath):
+    df = pd.read_csv(filepath)
+    # Aggregate, pivot and compute KPIs
+    q = df.groupby(['region','product'])['revenue'].sum().reset_index()
+    q['growth'] = q['revenue'].pct_change()
+    return q
+
+if __name__ == '__main__':
+    metrics = compute_quarterly_metrics('revenue_q4.csv')
+    print(metrics.head())
+        </code></pre>
+        <aside class="notes">
+          Quickly explain the pipeline: raw ingestion → aggregation → KPI computation.
+        </aside>
+      </section>
+
+      <!-- Math slide with financial formula (NPV example) -->
+      <section>
+        <h2>Financial Formula — Net Present Value (NPV)</h2>
+        <p>
+          \[ \mathrm{NPV} = \sum_{t=0}^{T} \frac{C_t}{(1+r)^t} \]
+        </p>
+        <p class="fragment">Where \(C_t\) = cash flow at time \(t\), \(r\) = discount rate.</p>
+        <aside class="notes">
+          Mention how we choose discount rate — weighted average cost of capital.
+        </aside>
+      </section>
+
+      <!-- Live demo / iframe slide (preload + lazy load) -->
+      <section>
+        <h2>Live Dashboard (Embedded)</h2>
+        <p>Interactive dashboard preview (hosted separately).</p>
+        <iframe data-src="https://example.com/earnings-dashboard" width="100%" height="480" data-preload></iframe>
+        <aside class="notes">
+          Use this slide to switch to the dashboard; note that the iframe is lazy-loaded for performance.
+        </aside>
+      </section>
+
+      <!-- Fragmented chart demo placeholders -->
+      <section id="chart-slide">
+        <h2>Quarterly Trend (stages)</h2>
+        <div class="chart" id="chart-container">
+          <!-- Placeholder; we'll draw into #chart-container on slide show -->
+          <svg width="100%" height="100%"></svg>
+        </div>
+
+        <ul>
+          <li class="fragment">Stage 1: Revenue baseline</li>
+          <li class="fragment">Stage 2: Revenue + Growth overlay</li>
+          <li class="fragment">Stage 3: Forecast (next quarter)</li>
+        </ul>
+        <aside class="notes">
+          Walk through the three stages to explain historicals -> drivers -> forecast.
+        </aside>
+      </section>
+
+      <!-- Closing slide with GitHub Pages instructions summary -->
+      <section>
+        <h2>Published Report</h2>
+        <p>
+          GitHub Pages URL (example):<br>
+          <code>https://[GITHUB_USERNAME].github.io/quarterly-earnings-presentation/</code>
+        </p>
+        <p class="fragment">To force-refresh cached assets add e.g.: <code>?v=1</code> or <code>?v=2</code></p>
+        <aside class="notes">
+          Tell stakeholders where to find the public report. If private, share internal hosting or set repo access accordingly.
+        </aside>
+      </section>
+
+      <footer class="presentation-footer">
+        Contact: <a href="mailto:21f3001224@ds.study.iitm.ac.in">21f3001224@ds.study.iitm.ac.in</a>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Reveal core + plugins (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+
+  <!-- Plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.esm.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.esm.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.esm.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.esm.js"></script>
+
+  <!-- MathJax (for math rendering) -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$','$'], ['\\(','\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <script>
+    // Initialize Reveal with commonly-used options and plugins
+    Reveal.initialize({
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+      controls: true,
+      progress: true,
+      history: true,
+      transition: 'slide',
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+    });
+
+    // Simple chart demo: draw a placeholder SVG line when slide becomes active
+    Reveal.addEventListener('slidechanged', function(event) {
+      if (event.currentSlide && event.currentSlide.id === 'chart-slide') {
+        const svg = document.querySelector('#chart-container svg');
+        if (!svg.dataset.drawn) {
+          svg.dataset.drawn = "1";
+          const w = svg.clientWidth, h = svg.clientHeight;
+          const ns = "http://www.w3.org/2000/svg";
+          const path = document.createElementNS(ns, 'path');
+          const points = [
+            [20, h-60],[w*0.25, h-120],[w*0.5, h-90],[w*0.75, h-140],[w-20, h-80]
+          ];
+          let d = 'M ' + points.map(p => p.join(' ')).join(' L ');
+          path.setAttribute('d', d);
+          path.setAttribute('fill','none');
+          path.setAttribute('stroke','#333');
+          path.setAttribute('stroke-width','3');
+          svg.appendChild(path);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
